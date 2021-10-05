@@ -1,4 +1,14 @@
-body {
+import { createGlobalStyle } from "styled-components"
+import 'antd/dist/antd.css';
+
+export const GlobalStyle = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
   margin: 0 auto;
   width: 100%;
   max-width: 1920px;
@@ -16,3 +26,5 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+`
