@@ -1,5 +1,5 @@
 import React from "react"
-import { Carousel, Radio } from "antd"
+import { Carousel } from "antd"
 
 const contentStyle = {
   height: "160px",
