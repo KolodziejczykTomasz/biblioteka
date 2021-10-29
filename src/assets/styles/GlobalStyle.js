@@ -11,12 +11,12 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   
   a, button {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 `
