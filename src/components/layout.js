@@ -1,5 +1,6 @@
 import * as React from "react"
 import { GlobalStyle } from "../assets/styles/GlobalStyle"
+import { ChakraProvider } from "@chakra-ui/react"
 import { ThemeProvider } from "styled-components"
 import { theme } from "../assets/styles/theme"
 import "../assets/styles/fonts.css"
@@ -15,7 +16,9 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Wrapper>
-          <main> {children}</main>
+          <ChakraProvider>
+            <main> {children}</main>
+          </ChakraProvider>
         </Wrapper>
       </ThemeProvider>
     </>

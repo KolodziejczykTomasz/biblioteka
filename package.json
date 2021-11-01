@@ -6,9 +6,10 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.1",
-    "@chakra-ui/react": "^1.6.8",
-    "@emotion/react": "^11.4.1",
+    "@chakra-ui/react": "^1.6.10",
+    "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "@react-icons/all-files": "^4.1.0",
     "antd": "^4.16.13",
     "babel-plugin-styled-components": "^1.13.2",
     "framer-motion": "^4.1.17",
@@ -26,6 +27,8 @@
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-iframe": "^1.8.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
