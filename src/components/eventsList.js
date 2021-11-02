@@ -1,7 +1,8 @@
 import React from "react"
-import { Title } from "../components/title"
-import { Subtitle } from "../components/subtitle"
-import { EventItem } from "../components/eventItem"
+import { Title } from "./title"
+import { Subtitle } from "./subtitle"
+import { EventItem } from "./eventItem"
+import { CalendarEvent } from "./calendarEvent"
 import styled from "styled-components"
 
 const WrapperWide = styled.div`
@@ -24,33 +25,39 @@ const WrapperShort = styled.div`
 `
 
 const ColLeft = styled.div`
- 
   background-color: rgb(27, 95, 198);
 `
-
+const WrapperEventsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
 const ColRight = styled.div`
- 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: black;
   background-color: white;
+  padding: 10px 10px;
 `
 
-const EventsList = styled.div`
-
-`
-
-export const Calendar = () => (
+export const EventsList = () => (
   <WrapperWide>
-    <Title style={{ color: "white"}}>Kalendarium wydarzeń</Title>
+    <Title style={{ color: "white" }}>Kalendarium wydarzeń</Title>
     <WrapperShort>
       <ColLeft>
         <Subtitle>Wydarzenie przeszłe </Subtitle>
-        <EventsList>
+        <WrapperEventsList>
           <EventItem />
           <EventItem />
           <EventItem />
-        </EventsList>
+        </WrapperEventsList>
       </ColLeft>
-      <ColRight>right</ColRight>
+      <ColRight>
+        <Subtitle>Terminarz</Subtitle>
+        <CalendarEvent />
+      </ColRight>
     </WrapperShort>
   </WrapperWide>
 )

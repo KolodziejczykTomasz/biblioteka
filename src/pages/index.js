@@ -2,7 +2,7 @@ import * as React from "react"
 import { Header } from "../components/header"
 import { Jumbotron } from "../components/jumbotron"
 import { NewsList } from "../components/newsList"
-import {Calendar} from "../components/calendar"
+import { EventsList } from "../components/eventsList"
 import {GalleryList} from "../components/galleryList"
 import { Footer } from "../components/footer"
 import Layout from "../components/layout"
@@ -19,8 +19,8 @@ const IndexPage = () => (
       <Header />
       <Jumbotron />
       <NewsList />
-      <Calendar/>
-      <GalleryList/>
+      <EventsList />
+      <GalleryList />
       <Footer />
     </Wrapper>
   </Layout>
