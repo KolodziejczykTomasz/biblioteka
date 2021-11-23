@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { GlobalStyle } from "../assets/styles/GlobalStyle"
 import { ChakraProvider } from "@chakra-ui/react"
 import { ThemeProvider } from "styled-components"

@@ -156,7 +156,7 @@ export const Footer = () => (
         </div>
         <div>
           <Title>Kontakt</Title> <div>tel.: 89 766 32 05 </div>
-          <div>e-mail: poczta@bibliteka-kraszewo.pl</div>
+          <div>e-mail: poczta@biblioteka-kraszewo.pl</div>
         </div>
       </ContentContact>
     </WrapperShort>

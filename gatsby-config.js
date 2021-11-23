@@ -5,7 +5,7 @@ module.exports = {
     author: `@Nettom`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`,    
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     {
