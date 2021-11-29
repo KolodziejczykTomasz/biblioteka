@@ -1,7 +1,7 @@
 import React from "react"
-import JumbotronImage from "../assets/images/jubotron.jpg"
-import { Button } from "../components/button"
-import { RightIcon } from "../components/icon"
+import JumbotronImage from "../../assets/images/jubotron.jpg"
+import { Button } from "../button"
+import { RightIcon } from "../icon"
 
 import styled from "styled-components"
 

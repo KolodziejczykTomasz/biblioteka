@@ -1,8 +1,9 @@
 import React from "react"
-import { Title } from "./title"
-import { Subtitle } from "./subtitle"
-import { EventItem } from "./eventItem"
-import { CalendarEvent } from "./calendarEvent"
+import { terminarz as lastEvents } from "../../data/terminarz"
+import { Title } from "../title"
+import { Subtitle } from "../subtitle"
+import { EventItem } from "../eventItem"
+import { CalendarEvent } from "../calendarEvent"
 import styled from "styled-components"
 
 const WrapperWide = styled.div`
@@ -47,15 +48,15 @@ export const EventsList = () => (
     <Title style={{ color: "white" }}>Kalendarium wydarzeń</Title>
     <WrapperShort>
       <ColLeft>
-        <Subtitle>Wydarzenie przeszłe </Subtitle>
+        <Subtitle style={{ fontWeight: 700 }}>Wydarzenia przeszłe </Subtitle>
         <WrapperEventsList>
-          <EventItem />
-          <EventItem />
-          <EventItem />
+          {lastEvents.slice(0, 4).map(({ id, title, desc, start }) => (
+            <EventItem key={id} title={title} desc={desc} start={start} />
+          ))}
         </WrapperEventsList>
       </ColLeft>
       <ColRight>
-        <Subtitle>Terminarz</Subtitle>
+        <Subtitle style={{ fontWeight: 700 }}>Terminarz</Subtitle>
         <CalendarEvent />
       </ColRight>
     </WrapperShort>

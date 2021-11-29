@@ -2,6 +2,22 @@ import React from "react"
 
 import styled from "styled-components"
 
+const Subtitle = styled.div`
+  width: 100%;
+  height: 28px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 29px;
+  :hover {
+    color: #1b5fc6;
+  }
+`
+const Title = styled.div`
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+`
 const Wrapper = styled.div`
   display: block;
   position: relative;
@@ -14,6 +30,12 @@ const Wrapper = styled.div`
   color: black;
   cursor: pointer;
   border-radius: 20px 0px 20px 0px;
+  :hover ${Subtitle} {
+    color: #1b5fc6;
+  }
+  :hover ${Title} {
+    color: #1b5fc6;
+  }
   :focus {
     -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
     -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
@@ -31,24 +53,36 @@ const Wrapper = styled.div`
     left: 0;
   }
 `
-const Date =styled.div`
-font-size: 14px;
-line-height: 21px;
-font-weight: 400;
-`
-const Title = styled.div`
-  font-size: 20px;
-  line-height: 23px;
-  font-weight: 600;
-  transition: 0.2s ease-in-out;
-  :hover {
-    color: #1b5fc6;
-  }
+const Date = styled.div`
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
 `
 
-export const EventItem = () => (
-  <Wrapper>
-    <Date>04 października 2021 o 17:00</Date>
-    <Title>Spotkanie autorskie z Marią Paszyńską - polską pisarką</Title>
-  </Wrapper>
-)
+export const EventItem = ({ title, start, desc }) => {
+  const Days = [
+    "niedziela",
+    "poniedziałek",
+    "wtorek",
+    "środa",
+    "czwartek",
+    "piątek",
+    "sobota",
+  ]
+  const Weekday = Days[start.getDay()]
+  const MonthLong = start.toLocaleString("pl-pl", { month: "long" })
+  const day = start.getDate()
+  const year = start.getFullYear()
+  const hours = start.getHours()
+  const minutes = start.getMinutes()
+
+  return (
+    <Wrapper>
+      <Date>
+        {day} {MonthLong} {year} - {Weekday}. <span style={{fontWeight: 600, fontSize: "14px"}}>Początek spotkania o {hours}:{minutes}</span>
+      </Date>
+      <Title>{title}</Title>
+      <Subtitle>{desc}</Subtitle>
+    </Wrapper>
+  )
+}

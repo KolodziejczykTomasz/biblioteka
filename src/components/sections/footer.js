@@ -1,5 +1,5 @@
 import React from "react"
-import LogoPhoto from "../assets/images/logo.jpg"
+import LogoPhoto from "../../assets/images/logo.jpg"
 
 import styled from "styled-components"
 

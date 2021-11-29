@@ -1,5 +1,7 @@
 import React from "react"
+import { terminarz as myEventsList } from "../data/terminarz"
 import { Calendar, momentLocalizer } from "react-big-calendar"
+
 import moment from "moment"
 import "moment/locale/pl"
 import "react-big-calendar/lib/css/react-big-calendar.css"
@@ -26,36 +28,20 @@ const WrapperSelected = styled.div`
 `
 
 const localizer = momentLocalizer(moment)
-const myEventsList = [
-  {
-    id: 0,
-    title: "Spotkanie autorskie",
-    allDay: true,
-    start: new Date(2021, 10, 26),
-    end: new Date(2021, 10, 26),
-  },
-  {
-    id: 1,
-    title: "Spotkanie autorskie 2",
-    allDay: true,
-    start: new Date(2021, 10, 25),
-    end: new Date(2021, 10, 25),
-  },
-]
 
 export const CalendarEvent = () => {
   const [selected, setSelected] = React.useState()
 
-  const handleSelectSlot = ({ title }) => {   
+  const handleSelectSlot = ({ title }) => {
     setSelected(title)
     return
   }
 
-
   const resetSelectSlot = () => {
-  setSelected("")
-  return
-}
+    setSelected("")
+    return
+  }
+
   return (
     <Wrapper>
       <div>

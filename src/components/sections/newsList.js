@@ -1,8 +1,8 @@
 import React from "react"
-import { Title } from "./title"
-import { NewsListItem } from "./newsListItem"
-import { ButtonMore } from "../components/buttonMore"
-import { RightIcon } from "../components/icon"
+import { Title } from "../title"
+import { NewsListItem } from "../newsListItem"
+import { ButtonMore } from "../buttonMore"
+import { RightIcon } from "../icon"
 
 import styled from "styled-components"
 

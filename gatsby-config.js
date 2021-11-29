@@ -5,7 +5,7 @@ module.exports = {
     author: `@Nettom`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,    
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     {
@@ -15,6 +15,14 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/src/data/posts`,
+      },
+    },
+    `gatsby-plugin-mdx`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
   ],
