@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Biblioteka w Kraszewie`,
     description: `Biblioteka Publiczna Gminy Lidzbark Warmiński w Kraszewie`,
-    author: `@Nettom`,
+    author: `Nettom`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     {
+        resolve: `gatsby-plugin-mdx`,
+        options: {           
+            extensions: [`.mdx`, `.md`],
+        },
+          },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
@@ -23,7 +29,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-mdx`,
     `gatsby-plugin-sharp`,
   ],
 }
