@@ -46,30 +46,50 @@ const ButtonText = styled.div`
 `
 
 
-export const NewsList = () => (
-  <Section>
-    <Wrapper>
-      <Title>Wiadomości</Title>
-      <WrapperCard>
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-        <NewsListItem />
-      </WrapperCard>
-      <WrapperButton>
-        <ButtonMore>
-          <ButtonText>
-            Zobacz wszystkie
-            <span>
-              <RightIcon />
-            </span>
-          </ButtonText>
-        </ButtonMore>
-      </WrapperButton>
-    </Wrapper>
-  </Section>
-)
+export const NewsList = ({data}) => {
+  const {
+    allMdx: { nodes },
+  } = data
+  
+  return (
+    <Section>
+      <Wrapper>
+        <Title>Wiadomości</Title>
+        <WrapperCard>
+          {nodes
+            .slice(0, 8)
+            .map(
+              ({
+                frontmatter: {
+                  title,
+                  published,
+                  category,
+                  slug,
+                  author,
+                  featuredImage,
+                },
+              }) => (
+                <NewsListItem
+                  key={slug}
+                  title={title}
+                  published={published}
+                  category={category}
+                  author={author}
+                  image={featuredImage.childImageSharp.fluid}
+                />
+              )
+            )}
+        </WrapperCard>
+        <WrapperButton>
+          <ButtonMore to="/">
+            <ButtonText>
+              Zobacz wszystkie
+              <span>
+                <RightIcon />
+              </span>
+            </ButtonText>
+          </ButtonMore>
+        </WrapperButton>
+      </Wrapper>
+    </Section>
+  )}

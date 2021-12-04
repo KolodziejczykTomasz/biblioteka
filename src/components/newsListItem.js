@@ -3,12 +3,15 @@ import { ClockIcon } from "./icon"
 import styled from "styled-components"
 
 const Title = styled.div`
+  display: flex;
+  align-items: flex-start;
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
   padding: 10px 0;
+  height: 100px;
   :hover {
     color: #1b5fc6;
   }
@@ -19,13 +22,15 @@ const CardImage = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 100%;
+  max-height: 200px;
   background-color: grey;
   overflow: hidden;
   cursor: pointer;
   & img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
   ::after {
     content: "";
@@ -59,10 +64,14 @@ const Wrapper = styled.div`
   }
 `
 
-
-
 const MetaWrapper = styled.div`
-  padding: 19px 24px 5px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-content: flex-end;
+  width: 100%;
+  height: 130px;
+  padding: 19px 24px 0 24px;
 `
 
 const DataPost = styled.div`
@@ -89,18 +98,30 @@ const MetaData = styled.div`
   padding: 10px 0;
 `
 
-export const NewsListItem = () => (
-  <Wrapper>
-    <CardImage>Photo</CardImage>
-    <MetaWrapper>
-      <Title>Ruszamy z wakacjami w Bibliotece w Kraszewie</Title>
-      <MetaData>
-        <DataPost>
-          <ClockIcon />
-          4.22.2021
-        </DataPost>
-        <CategoryPost>Aktualności</CategoryPost>
-      </MetaData>
-    </MetaWrapper>
-  </Wrapper>
-)
+const BreakSection = styled.div`
+  display: block;
+  min-height: 30px;
+  height: auto;
+`
+
+export const NewsListItem = ({ title, published, category, image }) => {
+const srcImage = image.src
+  return (
+    <Wrapper>
+      <CardImage>
+        <img src={srcImage} alt={title} />
+      </CardImage>
+      <BreakSection></BreakSection>
+      <MetaWrapper>
+        <Title>{title}</Title>
+        <MetaData>
+          <DataPost>
+            <ClockIcon />
+            {published}
+          </DataPost>
+          <CategoryPost>{category}</CategoryPost>
+        </MetaData>
+      </MetaWrapper>
+    </Wrapper>
+  )
+}
