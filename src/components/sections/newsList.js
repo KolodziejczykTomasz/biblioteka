@@ -76,6 +76,7 @@ export const NewsList = ({data}) => {
                   category={category}
                   author={author}
                   image={featuredImage.childImageSharp.fluid}
+                  slug={slug}            
                 />
               )
             )}

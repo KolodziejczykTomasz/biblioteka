@@ -6,28 +6,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(`
     query queryArticles {
       allMdx {
-        edges {
-          node {
-            frontmatter {
-              title
-              altText
-              author
-              category
-              slug
-              featuredImage {
-                childrenImageSharp {
-                  gatsbyImageData
-                }
-              }
-              gallery {
-                id
-                publicURL
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-            excerpt
+        nodes {
+          frontmatter {
+            slug
           }
         }
       }
@@ -44,3 +25,4 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+

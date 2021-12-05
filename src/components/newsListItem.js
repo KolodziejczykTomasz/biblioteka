@@ -1,5 +1,6 @@
 import React from "react"
 import { ClockIcon } from "./icon"
+import {Link} from "gatsby"
 import styled from "styled-components"
 
 const Title = styled.div`
@@ -104,10 +105,10 @@ const BreakSection = styled.div`
   height: auto;
 `
 
-export const NewsListItem = ({ title, published, category, image }) => {
+export const NewsListItem = ({ title, published, category, image, slug }) => {
 const srcImage = image.src
   return (
-    <Wrapper>
+    <Wrapper as={Link} aria-label="Więcej" to={`/${slug}`}>
       <CardImage>
         <img src={srcImage} alt={title} />
       </CardImage>

@@ -48,30 +48,16 @@ export const query = graphql`
     }
   }
 `
-const PostLayout = ({ data }) => {
+const GalleryLayout = ({ data }) => {
   const srcImage = data.mdx.frontmatter.featuredImage.childImageSharp.fluid.src
 
   return (
     <>
-      <StyledWrapper>
-        <div>
-          <div>Tytuł: {data.mdx.frontmatter.title}</div>
-          <div>
-            Photo:
-            <img src={srcImage} alt={data.mdx.frontmatter.title} />
-          </div>
-          <div>
-            Treść: <MDXRenderer>{data.mdx.body}</MDXRenderer>
-          </div>
-          <div>Publikacja: {data.mdx.frontmatter.published}</div>
-          <div>Kategoria: {data.mdx.frontmatter.category}</div>
-          <div>Autor: {data.mdx.frontmatter.author}</div>
-        </div>
-      </StyledWrapper>
+      
       <div>
         <div>Galeria</div>
         <ul>
-          {data.mdx.frontmatter.gallery.map(item => (
+          {data.mdx.frontmatter.gallery.slice(0, 3).map(item => (
             <li key={item.childImageSharp.fluid.originalName}>
               <img
                 src={item.childImageSharp.fluid.src}
@@ -81,8 +67,16 @@ const PostLayout = ({ data }) => {
           ))}
         </ul>
       </div>
+      <StyledWrapper>
+        <div>
+          <div>Tytuł: {data.mdx.frontmatter.title}</div>               
+          <div>Publikacja: {data.mdx.frontmatter.published}</div>
+          <div>Kategoria: {data.mdx.frontmatter.category}</div>
+          <div>Autor: {data.mdx.frontmatter.author}</div>
+        </div>
+      </StyledWrapper>
     </>
   )
 }
 
-export default PostLayout
+export default GalleryLayout
