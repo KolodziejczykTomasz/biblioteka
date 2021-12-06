@@ -1,28 +1,23 @@
 import * as React from "react"
-import { graphql } from "gatsby"
 import { Header } from "../components/sections/header"
 import { Jumbotron } from "../components/sections/jumbotron"
-import { NewsList } from "../components/sections/NewsList/newsList"
-import { EventsList } from "../components/sections/EventsList/eventsList"
-import { GalleryList } from "../components/sections/GalleryList/galleryList"
+import { AllPostList } from "../components/sections/AllPost/allPostList"
 import { Footer } from "../components/sections/footer"
 import Layout from "../layouts/layout"
 import Seo from "../components/seo"
-
+import { graphql } from "gatsby"
 
 import styled from "styled-components"
 
 const Wrapper = styled.div``
 
-const IndexPage = ({ ...props }) => (
+const AllPostPage = ({ ...props }) => (
   <Layout>
-    <Seo title="Home" />
+    <Seo title="Aktualności" />
     <Wrapper>
       <Header />
       <Jumbotron />
-      <NewsList {...props} />
-      <EventsList />
-      <GalleryList {...props} />
+      <AllPostList {...props} />    
       <Footer />
     </Wrapper>
   </Layout>
@@ -60,4 +55,4 @@ export const query = graphql`
     }
   }
 `
-export default IndexPage
+export default AllPostPage

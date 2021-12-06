@@ -4,7 +4,7 @@ import { Input } from "../input"
 import Logo from "../../assets/images/logo.jpg"
 import BIP_Icon from "../../assets/images/BipIcon.png"
 import FB_Icon from "../../assets/images/FbIcon.png"
-import Navigation from "../navigation"
+import Navigation from "./navigation"
 
 import styled from "styled-components"
 

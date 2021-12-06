@@ -1,4 +1,6 @@
 import React from "react"
+import { Link } from "gatsby"
+
 import styled from "styled-components"
 
 const Title = styled.div`
@@ -64,11 +66,15 @@ const MetaWrapper = styled.div`
   padding: 19px 24px 5px 24px;
 `
 
-export const GalleryListItem = () => (
-  <Wrapper>
-    <CardImage>Photo</CardImage>
-    <MetaWrapper>
-      <Title>Ruszamy z wakacjami w Bibliotece w Kraszewie</Title>
-    </MetaWrapper>
-  </Wrapper>
-)
+export const GalleryListItem = ({title, image, slug}) => {
+  const srcImage = image.src
+  return (
+    <Wrapper as={Link} aria-label="Więcej" to={`/gallery/${slug}`}>
+      <CardImage>
+        <img src={srcImage} alt={title} />
+      </CardImage>
+      <MetaWrapper>
+        <Title>{title}</Title>
+      </MetaWrapper>
+    </Wrapper>
+  )}

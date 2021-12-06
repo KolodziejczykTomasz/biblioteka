@@ -71,7 +71,7 @@ const PostLayout = ({ data }) => {
       <div>
         <div>Galeria</div>
         <ul>
-          {data.mdx.frontmatter.gallery.map(item => (
+          {data.mdx.frontmatter.gallery.slice(0, 3).map(item => (
             <li key={item.childImageSharp.fluid.originalName}>
               <img
                 src={item.childImageSharp.fluid.src}

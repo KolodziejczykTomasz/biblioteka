@@ -1,14 +1,15 @@
 import React from "react"
-import { Title } from "../title"
-import { NewsListItem } from "../newsListItem"
-import { ButtonMore } from "../buttonMore"
-import { RightIcon } from "../icon"
+import { Link } from "gatsby"
+import { Title } from "../../title"
+import { GalleryListItem } from "./galleryListItem"
+import { ButtonMore } from "../../buttonMore"
+import { RightIcon } from "../../icon"
 
 import styled from "styled-components"
 
 const Section = styled.div`
   width: 100%;
-  height: auto;  
+  height: auto;
 `
 const Wrapper = styled.div`
   display: flex;
@@ -22,11 +23,12 @@ const Wrapper = styled.div`
 const WrapperCard = styled.div`
   display: grid;
   width: 100%;
-  height: 100%;  
+  height: 100%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   row-gap: 20px;
   column-gap: 20px;
 `
+
 const WrapperButton = styled.div`
   display: flex;
   justify-content: center;
@@ -45,16 +47,14 @@ const ButtonText = styled.div`
   }
 `
 
-
-export const NewsList = ({data}) => {
-  const {
-    allMdx: { nodes },
-  } = data
-  
+export const GalleryList = ({ data }) => {
+    const {
+      allMdx: { nodes },
+    } = data
   return (
     <Section>
       <Wrapper>
-        <Title>Wiadomości</Title>
+        <Title>Galeria</Title>
         <WrapperCard>
           {nodes
             .slice(0, 8)
@@ -69,21 +69,25 @@ export const NewsList = ({data}) => {
                   featuredImage,
                 },
               }) => (
-                <NewsListItem
+                <GalleryListItem
                   key={slug}
                   title={title}
                   published={published}
                   category={category}
                   author={author}
                   image={featuredImage.childImageSharp.fluid}
-                  slug={slug}            
+                  slug={slug}
                 />
               )
             )}
         </WrapperCard>
         <WrapperButton>
-          <ButtonMore to="/">
-            <ButtonText>
+          <ButtonMore>
+            <ButtonText
+              as={Link}
+              aria-label="wszystkie galerie"
+              to="/"
+            >
               Zobacz wszystkie
               <span>
                 <RightIcon />

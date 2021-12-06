@@ -1,6 +1,7 @@
 import React from "react"
-import { ClockIcon } from "./icon"
+import { ClockIcon } from "../../icon"
 import {Link} from "gatsby"
+
 import styled from "styled-components"
 
 const Title = styled.div`

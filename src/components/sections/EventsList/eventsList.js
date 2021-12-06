@@ -1,9 +1,10 @@
 import React from "react"
-import { terminarz as lastEvents } from "../../data/terminarz"
-import { Title } from "../title"
-import { Subtitle } from "../subtitle"
-import { EventItem } from "../eventItem"
-import { CalendarEvent } from "../calendarEvent"
+import { terminarz as lastEvents } from "../../../data/terminarz"
+import { Title } from "../../title"
+import { Subtitle } from "../../subtitle"
+import { EventItem } from "./eventItem"
+import { CalendarEvent } from "./calendarEvent"
+
 import styled from "styled-components"
 
 const WrapperWide = styled.div`

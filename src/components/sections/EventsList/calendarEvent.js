@@ -1,5 +1,5 @@
 import React from "react"
-import { terminarz as myEventsList } from "../data/terminarz"
+import { terminarz as myEventsList } from "../../../data/terminarz"
 import { Calendar, momentLocalizer } from "react-big-calendar"
 
 import moment from "moment"
