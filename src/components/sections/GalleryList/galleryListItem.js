@@ -4,12 +4,15 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Title = styled.div`
+  display: flex;
+  align-items: flex-start;
   font-size: 18px;
   line-height: 24px;
   font-weight: 700;
   text-align: left;
   cursor: pointer;
   padding: 10px 0;
+  height: 70px;
   :hover {
     color: #1b5fc6;
   }
@@ -20,14 +23,15 @@ const CardImage = styled.div`
   align-items: center;
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 100%;
+  max-height: 250px;
   background-color: grey;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
   & img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
   }
   ::after {
     content: "";
@@ -36,7 +40,6 @@ const CardImage = styled.div`
     position: absolute;
   }
   :hover:after {
-    position: absolute;
     background-color: rgba(28, 71, 136, 0.3);
   }
 `
@@ -63,7 +66,19 @@ const Wrapper = styled.div`
 `
 
 const MetaWrapper = styled.div`
-  padding: 19px 24px 5px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-content: flex-end;
+  width: 100%;
+  height: 100px;
+  padding: 19px 24px 0 24px;
+`
+
+const BreakSection = styled.div`
+  display: block;
+  min-height: 10px;
+  height: auto;
 `
 
 export const GalleryListItem = ({title, image, slug}) => {
@@ -73,6 +88,7 @@ export const GalleryListItem = ({title, image, slug}) => {
       <CardImage>
         <img src={srcImage} alt={title} />
       </CardImage>
+      <BreakSection />
       <MetaWrapper>
         <Title>{title}</Title>
       </MetaWrapper>

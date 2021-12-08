@@ -13,9 +13,28 @@ const WrapperShort = styled.div`
   display: block;
   width: 100%;
   max-width: 1290px;
-  margin: 0 144px;
-  padding: 0 15px;
-  color: white;
+  margin: 0 auto;  
+  color: white;  
+  @media (max-width: 320px) {
+    margin: 0;
+    padding: 0;
+  }
+  @media (min-width: 321px) {
+    margin: 0;
+    padding: 0;
+  }
+  @media (min-width: 720px) {
+    margin: 0;
+    padding: 0;
+  }
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+    padding: 0 144px;
+  }
+  @media (min-width: 1536px) {
+    margin: 0 144px;
+    padding: 0 15px;
+  }
 `
 
 const ContentContact = styled.div`
@@ -37,9 +56,8 @@ const ContentContact = styled.div`
   & div:nth-child(3) {
     text-align: left;
   }
-  @media (max-width: 800px) {
-    grid-template-columns: 1fr;
-    width: 100%;
+  @media (max-width: 320px) {
+    grid-template-columns: repeat(1, 1fr);
     & div:nth-child(1) {
       text-align: center;
     }
@@ -49,6 +67,36 @@ const ContentContact = styled.div`
     & div:nth-child(3) {
       text-align: center;
     }
+  }
+  @media (min-width: 321px) {
+    grid-template-columns: repeat(1, 1fr);
+    & div:nth-child(1) {
+      text-align: center;
+    }
+    & div:nth-child(2) {
+      text-align: center;
+    }
+    & div:nth-child(3) {
+      text-align: center;
+    }
+  }
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(3, 1fr);
+    & div:nth-child(1) {
+      text-align: left;
+    }
+    & div:nth-child(2) {
+      text-align: left;
+    }
+    & div:nth-child(3) {
+      text-align: left;
+    }
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1536px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `
 
@@ -113,16 +161,24 @@ const Title = styled.div`
   color: #6e6d76;
   justify-content: left;
   text-transform: uppercase;
+  @media (max-width: 320px) {
+    justify-content: center;
+  }
+  @media (min-width: 321px) {
+    justify-content: center;
+  }
+  @media (min-width: 720px) {
+    justify-content: left;
+  }
 `
 
 const Content = styled.div`
   margin: 20px 0;
-  & ul {    
+  & ul {
     & li {
       list-style: none;
     }
   }
-
 `
 
 export const Footer = () => (
@@ -147,7 +203,6 @@ export const Footer = () => (
               <li>piątek - 10.00 - 18.00</li>
               <li>sobota - NIECZYNNE</li>
             </ul>
-             
           </Content>
           <Content>
             Codziennie od 13.00 do 14.00 obowiązuje przerwa na dezynfekcję

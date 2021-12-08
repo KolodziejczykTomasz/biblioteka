@@ -24,6 +24,17 @@ const WrapperShort = styled.div`
   margin: 0 144px 50px 144px;
   padding: 0 15px;
   color: white;
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  @media (min-width: 961px) {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1290px;
+    margin: 0 144px 50px 144px;
+    padding: 0 15px;
+  }
 `
 
 const ColLeft = styled.div`

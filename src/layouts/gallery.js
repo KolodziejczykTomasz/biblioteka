@@ -1,17 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-
-import styled from "styled-components"
-
-const StyledWrapper = styled.div`
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 1250px;
-  height: 90%;
-  padding-bottom: 75px;
-`
+import SinglePageTemplate from "../templates/SinglePageTemplate"
 
 export const query = graphql`
   query querySingleGallery($slug: String!) {
@@ -34,9 +23,8 @@ export const query = graphql`
     }
   }
 `
-const GalleryLayout = ({ data }) => {
-  return (
-    <>
+const GalleryLayout = ({ data }) => (  
+    <SinglePageTemplate>
       <div>
         <div>Galeria</div>
         <ul>
@@ -50,14 +38,11 @@ const GalleryLayout = ({ data }) => {
           ))}
         </ul>
       </div>
-      <StyledWrapper>
-        <div>
-          <div>Tytuł: {data.mdx.frontmatter.title}</div>
-          <div>Publikacja: {data.mdx.frontmatter.published}</div>
-        </div>
-      </StyledWrapper>
-    </>
-  )
-}
+      <div>
+        <div>Tytuł: {data.mdx.frontmatter.title}</div>
+        <div>Publikacja: {data.mdx.frontmatter.published}</div>
+      </div>
+    </SinglePageTemplate>  
+)
 
 export default GalleryLayout

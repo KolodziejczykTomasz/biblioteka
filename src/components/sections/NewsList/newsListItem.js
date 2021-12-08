@@ -113,7 +113,7 @@ const srcImage = image.src
       <CardImage>
         <img src={srcImage} alt={title} />
       </CardImage>
-      <BreakSection></BreakSection>
+      <BreakSection/>
       <MetaWrapper>
         <Title>{title}</Title>
         <MetaData>
