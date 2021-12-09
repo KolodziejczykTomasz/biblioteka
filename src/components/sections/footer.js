@@ -13,18 +13,18 @@ const WrapperShort = styled.div`
   display: block;
   width: 100%;
   max-width: 1290px;
-  margin: 0 auto;  
-  color: white;  
+  margin: 0 auto;
+  color: white;
   @media (max-width: 320px) {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
   @media (min-width: 321px) {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
   @media (min-width: 720px) {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
   @media (min-width: 1024px) {

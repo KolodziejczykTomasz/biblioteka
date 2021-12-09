@@ -5,9 +5,9 @@ import styled from "styled-components"
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 `
 
 const NavList = styled.ul`
@@ -16,7 +16,7 @@ const NavList = styled.ul`
   align-items: center;
   flex-direction: row;
   column-gap: 5px;
-  row-gap: 5px;  
+  row-gap: 5px;
 `
 
 const NavItem = styled.li`
@@ -37,7 +37,6 @@ const NavItem = styled.li`
   transition: ease-in 0.2s;
   cursor: pointer;
   border-radius: 4px;
-
   & p {
     display: block;
     margin: 0 auto;
@@ -46,7 +45,7 @@ const NavItem = styled.li`
   :hover {
     color: white;
     background-color: rgb(27, 95, 198);
-  }  
+  }
 `
 
 const Navigation = () => (

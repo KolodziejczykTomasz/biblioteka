@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { Header } from "../components/sections/header"
 import { Jumbotron } from "../components/sections/jumbotron"
@@ -10,21 +10,16 @@ import Layout from "../layouts/layout"
 import Seo from "../components/seo"
 
 
-import styled from "styled-components"
-
-const Wrapper = styled.div``
 
 const IndexPage = ({ ...props }) => (
   <Layout>
     <Seo title="Home" />
-    <Wrapper>
       <Header />
       <Jumbotron />
       <NewsList {...props} />
       <EventsList />
       <GalleryList {...props} />
-      <Footer />
-    </Wrapper>
+      <Footer />  
   </Layout>
 )
 export const query = graphql`

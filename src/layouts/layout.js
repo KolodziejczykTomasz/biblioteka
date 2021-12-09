@@ -6,23 +6,18 @@ import { ThemeProvider } from "styled-components"
 import { theme } from "../assets/styles/theme"
 
 import "../assets/styles/fonts.css"
-
-import styled from "styled-components"
+import "antd/dist/antd.css"
 
 import PropTypes from "prop-types"
-
-const Wrapper = styled.div``
 
 const Layout = ({ children }) => {
   return (
     <>
+     
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Wrapper>
-          <ChakraProvider>
-            <main> {children}</main>
-          </ChakraProvider>
-        </Wrapper>
+        <ChakraProvider>
+           <GlobalStyle />
+          {children}</ChakraProvider>
       </ThemeProvider>
     </>
   )

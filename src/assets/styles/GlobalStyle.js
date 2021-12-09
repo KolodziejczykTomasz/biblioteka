@@ -1,22 +1,25 @@
 import { createGlobalStyle } from "styled-components"
-import "antd/dist/antd.css"
 
 export const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
-  }
-  
-  *, *::after, *::before {
+  }  
+    *,
+  *::before,
+  *::after {
     box-sizing: inherit;
   }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  a, button {
-    font-family: 'Inter', sans-serif;
-  }
+ .chakra-ui-light { 
+       margin: 0 auto;
+} 
+
+body {      
+  display: block;
+  width: 100%;
+  height: auto; 
+  max-width: 1920px;
+  margin: 0 auto;   
+  } 
+
+
 `

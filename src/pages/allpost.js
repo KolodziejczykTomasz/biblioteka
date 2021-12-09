@@ -7,19 +7,13 @@ import Layout from "../layouts/layout"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 
-import styled from "styled-components"
-
-const Wrapper = styled.div``
-
 const AllPostPage = ({ ...props }) => (
-  <Layout>
+  <Layout> 
     <Seo title="Aktualności" />
-    <Wrapper>
-      <Header />
-      <Jumbotron />
-      <AllPostList {...props} />    
-      <Footer />
-    </Wrapper>
+    <Header />
+    <Jumbotron />
+    <AllPostList {...props} />
+    <Footer />
   </Layout>
 )
 export const query = graphql`
@@ -34,14 +28,14 @@ export const query = graphql`
           published
           slug
           featuredImage {
-              childImageSharp {
-                fluid {
-                  tracedSVG
-                  src
-                  srcSet
-                }
+            childImageSharp {
+              fluid {
+                tracedSVG
+                src
+                srcSet
               }
-            }         
+            }
+          }
           gallery {
             id
             publicURL

@@ -74,7 +74,6 @@ const ColumnSearch = styled.div`
     color: rgb(27, 95, 198);
     transition: 0.2s;
   }
-
   & div:nth-child(3) {
     display: grid;
     justify-content: center;
@@ -90,8 +89,8 @@ const ColumnSearch = styled.div`
         filter: grayscale(50%);
       }
       :focus {
-    outline: rgb(27, 95, 198) solid 2px;
-  }
+        outline: rgb(27, 95, 198) solid 2px;
+      }
     }
   }
 `

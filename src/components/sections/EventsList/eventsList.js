@@ -8,8 +8,6 @@ import { CalendarEvent } from "./calendarEvent"
 import styled from "styled-components"
 
 const WrapperWide = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: auto;
   background-color: #2a2a2a;
@@ -39,6 +37,7 @@ const WrapperShort = styled.div`
 
 const ColLeft = styled.div`
   background-color: rgb(27, 95, 198);
+
 `
 const WrapperEventsList = styled.div`
   display: flex;
@@ -49,6 +48,7 @@ const ColRight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   align-items: center;
   color: black;
   background-color: white;

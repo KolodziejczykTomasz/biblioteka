@@ -13,15 +13,7 @@ import "../assets/styles/fonts.css"
 
 import styled from "styled-components"
 
-const Wrapper = styled.div`
-  display: block;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  max-width: 1250px;
-  height: 90%;
-  padding-bottom: 75px;
-`
+const Wrapper = styled.div``
 
 const MainPageTemplate = ({ children }) => {
   return (
