@@ -6,20 +6,20 @@ import { NewsList } from "../components/sections/NewsList/newsList"
 import { EventsList } from "../components/sections/EventsList/eventsList"
 import { GalleryList } from "../components/sections/GalleryList/galleryList"
 import { Footer } from "../components/sections/footer"
+import { Navigation } from "../components/sections/navigation"
 import Layout from "../layouts/layout"
 import Seo from "../components/seo"
-
-
 
 const IndexPage = ({ ...props }) => (
   <Layout>
     <Seo title="Home" />
-      <Header />
-      <Jumbotron />
-      <NewsList {...props} />
-      <EventsList />
-      <GalleryList {...props} />
-      <Footer />  
+    <Header />
+    <Navigation />
+    <Jumbotron />
+    <NewsList {...props} />
+    <EventsList />
+    <GalleryList {...props} />
+    <Footer />
   </Layout>
 )
 export const query = graphql`
@@ -34,14 +34,14 @@ export const query = graphql`
           published
           slug
           featuredImage {
-              childImageSharp {
-                fluid {
-                  tracedSVG
-                  src
-                  srcSet
-                }
+            childImageSharp {
+              fluid {
+                tracedSVG
+                src
+                srcSet
               }
-            }         
+            }
+          }
           gallery {
             id
             publicURL

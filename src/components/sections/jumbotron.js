@@ -11,9 +11,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 600px;
+  height: auto;
   text-align: center;
   overflow: hidden;
+  padding: 10px 0;
   & img {
       position: relative;
   }
