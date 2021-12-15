@@ -50,6 +50,7 @@ export const CalendarEvent = () => {
           events={myEventsList}
           startAccessor="start"
           endAccessor="end"
+          culture="pl"
           style={{ height: 500 }}
           messages={{
             next: "Dalej",

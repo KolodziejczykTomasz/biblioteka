@@ -69,20 +69,38 @@ export const EventItem = ({ title, start, desc }) => {
     "piątek",
     "sobota",
   ]
+  const months = [
+    "Styczeń",
+    "Luty",
+    "Marzec",
+    "Kwiecień",
+    "Maj",
+    "Czerwiec",
+    "Lipiec",
+    "Sierpień",
+    "Wrzesień",
+    "Październik",
+    "Listopad",
+    "Grudzień",
+  ]
   const Weekday = Days[start.getDay()]
-  const MonthLong = start.toLocaleString("pl-pl", { month: "long" })
   const day = start.getDate()
   const year = start.getFullYear()
   const hours = start.getHours()
   const minutes = start.getMinutes()
+  const Month = months[start.getMonth() - 1]
+  const monthName = Month.toLocaleString("pl-pl", { month: "long" })
 
   return (
     <Wrapper>
       <Date>
-        {day} {MonthLong} {year} - {Weekday}. <span style={{fontWeight: 600, fontSize: "14px"}}>Początek spotkania o {hours}:{minutes}</span>
+        {day} {monthName} {year} - {Weekday}.{" "}
+        <span style={{ fontWeight: 600, fontSize: "14px" }}>
+          Początek spotkania o {hours}:{minutes}
+        </span>
       </Date>
       <Title>{title}</Title>
-      <Subtitle>{desc}</Subtitle>
+      <Subtitle/>
     </Wrapper>
   )
 }

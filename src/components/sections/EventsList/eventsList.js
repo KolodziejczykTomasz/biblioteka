@@ -20,7 +20,7 @@ const WrapperShort = styled.div`
   height: 90%;
   max-width: 1290px;
   margin: 0 144px 50px 144px;
-  padding: 0 15px;
+  padding: 0 15px 15px 15px;
   color: white;
   @media (max-width: 960px) {
     grid-template-columns: repeat(1, 1fr);
@@ -31,7 +31,7 @@ const WrapperShort = styled.div`
     grid-template-columns: 1fr 1fr;
     max-width: 1290px;
     margin: 0 144px 50px 144px;
-    padding: 0 15px;
+    padding: 0 15px 80px 15px;
   }
 `
 
