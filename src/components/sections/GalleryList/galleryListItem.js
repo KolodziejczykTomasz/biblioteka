@@ -4,15 +4,21 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 
 const Title = styled.div`
-  display: flex;
-  align-items: flex-start;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: 48px;
+  line-height: 1;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.4em;
   font-size: 18px;
-  line-height: 24px;
   font-weight: 700;
   text-align: left;
-  cursor: pointer;
+  width: 100%;
   padding: 10px 0;
-  height: 70px;
   :hover {
     color: #1b5fc6;
   }

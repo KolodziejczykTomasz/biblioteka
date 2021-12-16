@@ -88,7 +88,8 @@ export const EventItem = ({ title, start, desc }) => {
   const year = start.getFullYear()
   const hours = start.getHours()
   const minutes = start.getMinutes()
-  const Month = months[start.getMonth() - 1]
+  //const Month = months[start.getMonth() - 1]
+  const Month = months[start.getMonth()]
   const monthName = Month.toLocaleString("pl-pl", { month: "long" })
 
   return (

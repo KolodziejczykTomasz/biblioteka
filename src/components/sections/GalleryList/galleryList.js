@@ -92,6 +92,7 @@ export const GalleryList = ({ data }) => {
         <Title>Galeria</Title>
         <WrapperCard>
           {nodes
+            .sort(() => 0.5 - Math.random())
             .slice(0, 8)
             .map(
               ({
@@ -118,11 +119,7 @@ export const GalleryList = ({ data }) => {
         </WrapperCard>
         <WrapperButton>
           <ButtonMore>
-            <ButtonText
-              as={Link}
-              aria-label="wszystkie galerie"
-              to="/"
-            >
+            <ButtonText as={Link} aria-label="wszystkie galerie" to="/">
               Zobacz wszystkie
               <span>
                 <RightIcon />

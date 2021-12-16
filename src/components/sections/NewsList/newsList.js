@@ -93,6 +93,7 @@ export const NewsList = ({data}) => {
         <Title>Wiadomości</Title>
         <WrapperCard>
           {nodes
+          .sort((a, b) => (b.published) -  (a.published))
             .slice(0, 8)
             .map(
               ({

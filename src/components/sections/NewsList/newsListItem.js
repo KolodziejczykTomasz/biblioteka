@@ -1,19 +1,30 @@
 import React from "react"
 import { ClockIcon } from "../../icon"
-import {Link} from "gatsby"
+import { Link } from "gatsby"
 
 import styled from "styled-components"
 
+const TitleWrapper = styled.div`
+  min-height: 64px;
+`
+
 const Title = styled.div`
-  display: flex;
-  align-items: flex-start;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height:48px;
+  line-height: 1;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.4em;
   font-size: 18px;
-  line-height: 24px;
   font-weight: 700;
   text-align: left;
-  cursor: pointer;
+  width: 100%;
   padding: 10px 0;
-  height: 100px;
+  cursor: pointer;
   :hover {
     color: #1b5fc6;
   }
@@ -48,7 +59,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 362px;
+  min-height: 362px;
+  height: auto;
   border: 1px solid #c2c2c2;
   border-radius: 10px;
   overflow: hidden;
@@ -74,6 +86,7 @@ const MetaWrapper = styled.div`
   width: 100%;
   height: 130px;
   padding: 19px 24px 0 24px;
+  overflow: hidden;
 `
 
 const DataPost = styled.div`
@@ -107,15 +120,18 @@ const BreakSection = styled.div`
 `
 
 export const NewsListItem = ({ title, published, category, image, slug }) => {
-const srcImage = image.src
+  const srcImage = image.src
+
   return (
     <Wrapper as={Link} aria-label="Więcej" to={`/${slug}`}>
       <CardImage>
         <img src={srcImage} alt={title} />
       </CardImage>
-      <BreakSection/>
+      <BreakSection />
       <MetaWrapper>
-        <Title>{title}</Title>
+        <TitleWrapper>
+          <Title>{title} </Title>
+        </TitleWrapper>
         <MetaData>
           <DataPost>
             <ClockIcon />
