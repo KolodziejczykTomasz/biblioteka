@@ -1,21 +1,19 @@
 import * as React from "react"
-import { Header } from "../components/sections/header"
-import { Jumbotron } from "../components/sections/jumbotron"
 import { AllPostList } from "../components/sections/AllPost/allPostList"
-import { Footer } from "../components/sections/footer"
-import Layout from "../layouts/layout"
-import Seo from "../components/seo"
 import { graphql } from "gatsby"
+import SinglePageTemplate from "../templates/SinglePageTemplate"
+import Seo from "../components/seo"
+
 
 const AllPostPage = ({ ...props }) => (
-  <Layout> 
-    <Seo title="Aktualności" />
-    <Header />
-    <Jumbotron />
-    <AllPostList {...props} />
-    <Footer />
-  </Layout>
+  <SinglePageTemplate>
+    <Seo title="Aktualności" />    
+    <AllPostList {...props} /> 
+  </SinglePageTemplate>
 )
+
+
+
 export const query = graphql`
   {
     allMdx(sort: { fields: frontmatter___published, order: DESC }) {
@@ -44,6 +42,7 @@ export const query = graphql`
             }
           }
         }
+        body
         excerpt(pruneLength: 200)
       }
     }

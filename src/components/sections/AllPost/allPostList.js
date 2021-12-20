@@ -1,9 +1,33 @@
 import React from "react"
-import { NewsListItem } from "../NewsList/newsListItem"
+import { AllPostListItem } from "../AllPost/allPostListItem"
 
 import styled from "styled-components"
 
-const Wrapper = styled.div``
+const WrapperWide = styled.div`
+  width: 100%;
+  height: auto;
+`
+const WrapperShort = styled.div`
+  display: flex;
+  margin: 0 144px;
+  padding: 20px 15px 80px 15px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 42px;
+  font-weight: 700;
+  padding: 30px 0;
+`
+
+
+
 
 export const AllPostList = ({ data }) => {
   const {
@@ -11,9 +35,9 @@ export const AllPostList = ({ data }) => {
   } = data
 
   return (
-    <Wrapper>
-      <div>Aktualności</div>
-      <div>
+    <WrapperWide>      
+      <WrapperShort>
+        <Header>Aktualności</Header>
         {nodes.map(
           ({
             frontmatter: {
@@ -22,10 +46,11 @@ export const AllPostList = ({ data }) => {
               category,
               slug,
               author,
+              
               featuredImage,
-            },
+            },body
           }) => (
-            <NewsListItem
+            <AllPostListItem
               key={slug}
               title={title}
               published={published}
@@ -33,10 +58,11 @@ export const AllPostList = ({ data }) => {
               author={author}
               image={featuredImage.childImageSharp.fluid}
               slug={slug}
+              body={body}
             />
           )
         )}
-      </div>
-    </Wrapper>
+      </WrapperShort>
+    </WrapperWide>
   )
 }

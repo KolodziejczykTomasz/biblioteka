@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Navigation } from "../components/sections/navigation"
 import { Header } from "../components/sections/header"
 import { Jumbotron } from "../components/sections/jumbotron"
 import { Footer } from "../components/sections/footer"
@@ -22,6 +22,7 @@ const SinglePageTemplate = ({ children }) => {
       <Wrapper>
         <ChakraProvider>
           <Header />
+          <Navigation />
           <Jumbotron />
           {children}
           <Footer />
