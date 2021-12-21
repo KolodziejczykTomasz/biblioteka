@@ -14,6 +14,21 @@ const WrapperShort = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 480px) {
+    margin: 0 5px;
+  }
+  @media (min-width: 481px) and (max-width: 766px) {
+    margin: 0 10px;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+    margin: 0 25px;
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+    margin: 0 50px;
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+    margin: 0 144px;
+  }
 `
 
 const Header = styled.div`
@@ -26,16 +41,13 @@ const Header = styled.div`
   padding: 30px 0;
 `
 
-
-
-
 export const AllPostList = ({ data }) => {
   const {
     allMdx: { nodes },
   } = data
 
   return (
-    <WrapperWide>      
+    <WrapperWide>
       <WrapperShort>
         <Header>Aktualności</Header>
         {nodes.map(
@@ -46,9 +58,10 @@ export const AllPostList = ({ data }) => {
               category,
               slug,
               author,
-              
+
               featuredImage,
-            },body
+            },
+            body,
           }) => (
             <AllPostListItem
               key={slug}

@@ -2,8 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import { VerticalLine } from "../../icons"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { ButtonMore } from "../../buttonMore"
+import { ButtonBack } from "../../buttonBack"
 import { RightIcon } from "../../icon"
+
 import styled from "styled-components"
 
 const Title = styled.div`
@@ -24,6 +25,9 @@ const CardImage = styled.div``
 const Row = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 766px) {
+    flex-direction: column;
+  }
 `
 
 const Wrapper = styled.div`
@@ -61,6 +65,7 @@ const WrapperPublishedRedBox = styled.div`
   color: white;
   width: 90px;
   height: 90px;
+  margin-left: 5px;
   & span {
     font-size: 32px;
     font-weight: 600;
@@ -71,6 +76,12 @@ const WrapperPhoto = styled.div`
   display: flex;
   width: 400px;
   padding-top: 19px;
+  @media (max-width: 766px) {
+    width: 100%;
+    padding: 0 5px;
+    justify-content: center;
+    align-items: center;
+  }
   & img {
     display: block;
     width: 100%;
@@ -89,7 +100,8 @@ const WrapperMeta = styled.div`
   justify-content: left;
   align-content: flex-end;
   width: 100%;
-  height: 130px;
+  min-height: 130px;
+  height: auto;
   padding: 19px 24px 0 24px;
   overflow: hidden;
 `
@@ -206,14 +218,14 @@ export const AllPostListItem = ({
       </Row>
       <Footer>
         <WrapperButton>
-          <ButtonMore>
+          <ButtonBack>
             <ButtonText as={Link} aria-label="Więcej" to={`/${slug}`}>
               Zobacz więcej
               <span>
                 <RightIcon />
               </span>
             </ButtonText>
-          </ButtonMore>
+          </ButtonBack>
         </WrapperButton>
       </Footer>
     </Wrapper>

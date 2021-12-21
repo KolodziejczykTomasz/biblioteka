@@ -1,7 +1,9 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { VerticalLine } from "../components/icons/"
+import { ButtonBack } from "../components/buttonBack"
+import { LeftIcon } from "../components/icon"
 
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 
@@ -55,6 +57,21 @@ const WrapperShort = styled.div`
   align-items: center;
   flex-direction: column;
   box-shadow: 10px 10px 10px rgba(83, 83, 83, 0.63);
+  @media (max-width: 480px) {
+    margin: 0 5px;
+  }
+  @media (min-width: 481px) and (max-width: 766px) {
+    margin: 0 10px;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+    margin: 0 25px;
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+    margin: 0 50px;
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+    margin: 0 144px;
+  }
 `
 const Title = styled.div`
   display: flex;
@@ -85,6 +102,18 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-size: 18px;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 481px) and (max-width: 766px) {
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+  }
 `
 
 const Description = styled.div`
@@ -113,6 +142,30 @@ const PhotoGallery = styled.div`
     width: 100%;
     height: 50%;
     object-fit: cover;
+  }
+`
+
+const Footer = styled.div`
+display: flex:
+height: 50px;
+width: 100%;
+`
+const WrapperButton = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  padding-right: 15px;
+`
+
+const ButtonText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  & span {
+    margin-left: 10px;
+    margin-bottom: -4px;
   }
 `
 
@@ -167,6 +220,18 @@ const PostLayout = ({ data }) => {
               </PhotoGallery>
             </Photos>
           </Content>
+          <Footer>
+            <WrapperButton>
+              <ButtonBack>
+                <ButtonText as={Link} aria-label="Powrót" to="/">
+                  <span>
+                    <LeftIcon />
+                  </span>
+                  Powrót                  
+                </ButtonText>
+              </ButtonBack>
+            </WrapperButton>
+          </Footer>
         </WrapperShort>
       </WrapperWide>
     </SinglePageTemplate>

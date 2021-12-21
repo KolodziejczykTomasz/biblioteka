@@ -1,6 +1,8 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { VerticalLine } from "../components/icons/"
+import { ButtonBack } from "../components/buttonBack"
+import { LeftIcon } from "../components/icon"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 
 import styled from "styled-components"
@@ -40,6 +42,21 @@ const WrapperShort = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (max-width: 480px) {
+    margin: 0 5px;
+  }
+  @media (min-width: 481px) and (max-width: 766px) {
+    margin: 0 10px;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+    margin: 0 25px;
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+    margin: 0 50px;
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+    margin: 0 144px;
+  }
 `
 const Title = styled.div`
   display: flex;
@@ -71,10 +88,41 @@ const Category = styled.div``
 const WrapperGallery = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);  
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 5px;
-  row-gap: 10px; 
+  row-gap: 10px;
   margin-top: 30px;
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 10px;
+  }
+  @media (min-width: 481px) and (max-width: 660px) {
+    grid-template-columns: repeat(1, 1fr);
+    column-gap: 10px;
+    place-items: center;
+  }
+  @media (min-width: 661px) and (max-width: 766px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 10px;
+    width: 80%;
+    place-items: center;
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    place-items: center;
+    margin-right: 40px;
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    place-items: center;
+    margin-right: 100px;
+  }
 `
 
 const WrapperPhoto = styled.div`
@@ -86,6 +134,30 @@ const WrapperPhoto = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+`
+
+const Footer = styled.div`
+display: flex:
+height: 50px;
+width: 100%;
+`
+const WrapperButton = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  padding-right: 15px;
+`
+
+const ButtonText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  & span {
+    margin-left: 10px;
+    margin-bottom: -4px;
   }
 `
 
@@ -104,34 +176,45 @@ const GalleryLayout = ({ data }) => {
     }
 
     const mName = getMonthName(Month)
-  return(
-
-  <SinglePageTemplate>
-    <WrapperWide>
-      <WrapperShort>
-        <Title>{data.mdx.frontmatter.title}</Title>
-        <Meta>
-          <Author>{data.mdx.frontmatter.author}</Author>
-          <VerticalLine />
-          <Published>
-            {day} {mName} {year}r.
-          </Published>
-          <VerticalLine />
-          <Category>{data.mdx.frontmatter.category}</Category>
-        </Meta>
-        <WrapperGallery>
-          {data.mdx.frontmatter.gallery.map(item => (
-            <WrapperPhoto key={item.childImageSharp.fluid.originalName}>
-              <img
-                src={item.childImageSharp.fluid.src}
-                alt={item.childImageSharp.fluid.originalName}
-              />
-            </WrapperPhoto>
-          ))}
-        </WrapperGallery>
-      </WrapperShort>
-    </WrapperWide>
-  </SinglePageTemplate>
-)}
+  return (
+    <SinglePageTemplate>
+      <WrapperWide>
+        <WrapperShort>
+          <Title>{data.mdx.frontmatter.title}</Title>
+          <Meta>
+            <Author>{data.mdx.frontmatter.author}</Author>
+            <VerticalLine />
+            <Published>
+              {day} {mName} {year}r.
+            </Published>
+            <VerticalLine />
+            <Category>{data.mdx.frontmatter.category}</Category>
+          </Meta>
+          <WrapperGallery>
+            {data.mdx.frontmatter.gallery.map(item => (
+              <WrapperPhoto key={item.childImageSharp.fluid.originalName}>
+                <img
+                  src={item.childImageSharp.fluid.src}
+                  alt={item.childImageSharp.fluid.originalName}
+                />
+              </WrapperPhoto>
+            ))}
+          </WrapperGallery>
+          <Footer>
+            <WrapperButton>
+              <ButtonBack>
+                <ButtonText as={Link} aria-label="Powrót" to="/">
+                  <span>
+                    <LeftIcon />
+                  </span>
+                  Powrót
+                </ButtonText>
+              </ButtonBack>
+            </WrapperButton>
+          </Footer>
+        </WrapperShort>
+      </WrapperWide>
+    </SinglePageTemplate>
+  )}
 
 export default GalleryLayout
