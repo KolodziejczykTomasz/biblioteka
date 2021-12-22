@@ -16,33 +16,42 @@ const WrapperWide = styled.div`
 const WrapperShort = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
-  height: 90%;
-  max-width: 1290px;
+  height: 80%;
   margin: 0 144px 50px 144px;
-  padding: 0 15px 15px 15px;
+  padding: 0 15px 50px 15px;
   color: white;
-  @media (max-width: 960px) {
-    grid-template-columns: repeat(1, 1fr);
-    margin: 0 auto;
-    padding: 0 15px;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    margin: 0 0;
+    padding: 0 0;
   }
-  @media (min-width: 961px) {
-    grid-template-columns: 1fr 1fr;
-    max-width: 1290px;
-    margin: 0 144px 50px 144px;
-    padding: 0 15px 80px 15px;
+  @media (min-width: 481px) and (max-width: 766px) {
+    grid-template-columns: 1fr;
+    margin: 0 10px 0 15px;
+  }
+  @media (min-width: 767px) and (max-width: 960px) {
+    grid-template-columns: 1fr;
+    margin: 0 50px 0 50px;
+  }
+  @media (min-width: 961px) and (max-width: 1025px) {
+    grid-template-columns: 1fr;
+    margin: 0 50px 0 50px;
+  }
+  @media (min-width: 1026px) and (max-width: 1280px) {
+    margin: 0 10px 0 15px;
   }
 `
 
 const ColLeft = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: rgb(27, 95, 198);
-
 `
 const WrapperEventsList = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
 `
 const ColRight = styled.div`
   display: flex;

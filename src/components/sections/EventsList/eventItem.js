@@ -21,7 +21,7 @@ const Title = styled.div`
 const Wrapper = styled.div`
   display: block;
   position: relative;
-  width: 620px;
+  width: 90%;
   min-height: 50px;
   height: auto;
   padding: 27px 30px 17px 70px;
