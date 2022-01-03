@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Subtitle } from "../components/subtitle"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 import Seo from "../components/seo"
 
@@ -44,27 +43,15 @@ const Title = styled.div`
   border-bottom: 1px solid grey;
 `
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const NotFoundPage = () => (
-  <SinglePageTemplate>
-    <Seo title="404: Not found" />
+const CookiesPage = () => (
+  <SinglePageTemplate> 
+    <Seo title="Polityka prywatności" />
     <WrapperWide>
       <WrapperShort>
-        <Wrapper>
-          <Title>404: Not Found</Title>
-          <Subtitle>
-            Po prostu trafiłeś na stronę, która nie istnieje...
-          </Subtitle>
-        </Wrapper>
+        <Title>Polityka prywatności</Title>       
       </WrapperShort>
     </WrapperWide>
   </SinglePageTemplate>
 )
 
-export default NotFoundPage
+export default CookiesPage

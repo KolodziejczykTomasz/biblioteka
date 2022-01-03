@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 
 import styled from "styled-components"
 
@@ -28,7 +29,19 @@ const NavItem = styled.li`
   transition: ease-in 0.2s;
   cursor: pointer;
   border-radius: 4px;
+  & p {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
 
+  :link {
+    color: black;
+  }
+  :hover {
+    color: white;
+    background-color: rgb(27, 95, 198);
+  }
   @media (max-width: 480px) {
   }
   @media (min-width: 481px) and (max-width: 766px) {
@@ -48,16 +61,6 @@ const NavItem = styled.li`
     width: 170px;
     margin: 0 10px;
     padding: 0 20px;
-  }
-
-  & p {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-  }
-  :hover {
-    color: white;
-    background-color: rgb(27, 95, 198);
   }
 `
 const NavList = styled.ul`
@@ -83,7 +86,7 @@ const Navi = styled.nav`
   color: white;
   transition: transform ease-in-out 0.3s;
   & a {
-    color: white;
+    color: black;
     text-decoration: none;
   }
   @media (max-width: 680px) {
@@ -221,11 +224,19 @@ export const Navigation = () => {
       </MenuToggleButton>
       <Navi isOpen={isOpen}>
         <NavList>
-          <NavItem>Aktualności</NavItem>
-          <NavItem>O nas</NavItem>
-          <NavItem>Filie</NavItem>
-          <NavItem>Galeria</NavItem>
-          <NavItem>
+          <NavItem as={Link} aria-label="Aktualności" to="/allpost">
+            Aktualności
+          </NavItem>
+          <NavItem as={Link} aria-label="O nas" to="/about">
+            O nas
+          </NavItem>
+          <NavItem as={Link} aria-label="Filie" to="/branches">
+            Filie
+          </NavItem>
+          <NavItem as={Link} aria-label="Galeria" to="/gallery">
+            Galeria
+          </NavItem>
+          <NavItem as={Link} aria-label="Deklaracja dostępności" to="/rodo">
             <p>Deklaracja dostępności</p>
           </NavItem>
         </NavList>

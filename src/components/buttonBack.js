@@ -25,4 +25,10 @@ export const ButtonBack = styled.button`
     background-color: white;
     border: 2px solid rgb(27, 95, 198);
   }
+  :visited {
+    outline: rgb(27, 95, 198) solid 2px;
+    color: rgb(27, 95, 198);
+    background-color: white;
+    border: 2px solid rgb(27, 95, 198);
+  }
 `

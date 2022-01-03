@@ -58,7 +58,6 @@ export const AllPostList = ({ data }) => {
               category,
               slug,
               author,
-
               featuredImage,
             },
             body,
@@ -69,7 +68,7 @@ export const AllPostList = ({ data }) => {
               published={published}
               category={category}
               author={author}
-              image={featuredImage.childImageSharp.fluid}
+              image={featuredImage.childImageSharp.gatsbyImageData}
               slug={slug}
               body={body}
             />

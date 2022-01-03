@@ -103,6 +103,7 @@ export const GalleryList = ({ data }) => {
                   slug,
                   author,
                   featuredImage,
+                  publicURL,
                 },
               }) => (
                 <GalleryListItem
@@ -111,15 +112,16 @@ export const GalleryList = ({ data }) => {
                   published={published}
                   category={category}
                   author={author}
-                  image={featuredImage.childImageSharp.fluid}
+                  image={featuredImage}
                   slug={slug}
+                  publicURL={publicURL}
                 />
               )
             )}
         </WrapperCard>
         <WrapperButton>
           <ButtonMore>
-            <ButtonText as={Link} aria-label="wszystkie galerie" to="/">
+            <ButtonText as={Link} aria-label="wszystkie galerie" to="/gallery">
               Zobacz wszystkie
               <span>
                 <RightIcon />

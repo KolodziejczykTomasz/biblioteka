@@ -90,7 +90,7 @@ const BreakSection = styled.div`
   height: auto;
 `
 
-export const GalleryListItem = ({ title, image, slug }) => {
+export const GalleryAllListItem = ({ title, image, slug }) => {
   const imagesrc = getImage(image)
 
   return (

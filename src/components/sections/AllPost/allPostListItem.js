@@ -4,6 +4,7 @@ import { VerticalLine } from "../../icons"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { ButtonBack } from "../../buttonBack"
 import { RightIcon } from "../../icon"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import styled from "styled-components"
 
@@ -165,7 +166,7 @@ export const AllPostListItem = ({
   slug,
   body,
 }) => {
-  const srcImage = image.src
+  const imagesrc = getImage(image)
   const start = published
 
   const day = start.slice(8, 10)
@@ -194,8 +195,8 @@ export const AllPostListItem = ({
           </WrapperPublishedRedBox>
         </WrapperPublished>
         <WrapperPhoto>
-          <CardImage>
-            <img src={srcImage} alt={title} />
+          <CardImage>         
+              <GatsbyImage image={imagesrc} alt={title} />           
           </CardImage>
         </WrapperPhoto>
         <WrapperContent>

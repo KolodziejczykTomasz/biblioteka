@@ -1,26 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Header } from "../components/sections/header"
-import { Jumbotron } from "../components/sections/jumbotron"
 import { NewsList } from "../components/sections/NewsList/newsList"
 import { EventsList } from "../components/sections/EventsList/eventsList"
 import { GalleryList } from "../components/sections/GalleryList/galleryList"
-import { Footer } from "../components/sections/footer"
-import { Navigation } from "../components/sections/navigation"
-import Layout from "../layouts/layout"
+
+import  MainPageTemplate from "../templates/MainTemplate"
+
 import Seo from "../components/seo"
 
 const IndexPage = ({ ...props }) => (
-  <Layout>
+  <MainPageTemplate>
     <Seo title="Home" />
-    <Header />
-    <Navigation />
-    <Jumbotron />
     <NewsList {...props} />
     <EventsList />
     <GalleryList {...props} />
-    <Footer />
-  </Layout>
+  </MainPageTemplate>
 )
 export const query = graphql`
   {
@@ -35,6 +29,7 @@ export const query = graphql`
           slug
           featuredImage {
             childImageSharp {
+              gatsbyImageData(layout: CONSTRAINED)
               fluid {
                 tracedSVG
                 src

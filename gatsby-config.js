@@ -35,6 +35,41 @@ module.exports = {
         path: `${__dirname}/src/data/posts`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-local-search',
+      options: {    
+        name: 'pages',
+        engine: 'flexsearch',
+        engineOptions: 'speed',
+        query: `
+          {
+            allMarkdownRemark {
+              nodes {
+                id
+                frontmatter {
+                  path
+                  title
+                }
+                rawMarkdownBody
+              }
+            }
+          }
+        `,
+        ref: 'id',
+        index: ['title', 'body'],
+        store: ['id', 'path', 'title'],
+
+       
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map((node) => ({
+            id: node.id,
+            path: node.frontmatter.path,
+            title: node.frontmatter.title,
+            body: node.rawMarkdownBody,
+          })),
+      },
+    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
   ],

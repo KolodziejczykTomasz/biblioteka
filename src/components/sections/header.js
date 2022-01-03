@@ -1,6 +1,8 @@
 import React from "react"
+import { Link } from "gatsby"
 import { SearchIcon } from "../icon"
 import { Input } from "../input"
+
 import Logo from "../../assets/images/logo.jpg"
 import BIP_Icon from "../../assets/images/BipIcon.png"
 import FB_Icon from "../../assets/images/FbIcon.png"
@@ -208,7 +210,7 @@ export const Header = () => (
   <Wrapper>
     <div>
       <RowLogo>
-        <ColumnLogo>
+        <ColumnLogo as={Link} aria-label="Strona główna" to="/">
           <div>
             <img src={Logo} alt="Logo biblioteki" />
           </div>

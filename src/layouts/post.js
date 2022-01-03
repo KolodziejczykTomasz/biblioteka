@@ -4,7 +4,8 @@ import { graphql, Link } from "gatsby"
 import { VerticalLine } from "../components/icons/"
 import { ButtonBack } from "../components/buttonBack"
 import { LeftIcon } from "../components/icon"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 
 import styled from "styled-components"
@@ -14,22 +15,22 @@ export const query = graphql`
     mdx(frontmatter: { slug: { eq: $slug } }) {
       frontmatter {
         title
-        altText
+        slug
         author
         category
         published
-        slug
         featuredImage {
           childImageSharp {
-            fluid {
-              tracedSVG
-              src
-              srcSet
-            }
+            gatsbyImageData(layout: CONSTRAINED)           
           }
         }
         gallery {
+          publicURL
           childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED)
+            resize {
+              aspectRatio
+            }
             fluid {
               srcSet
               src
@@ -39,8 +40,8 @@ export const query = graphql`
           }
         }
       }
-      excerpt
       body
+      excerpt(pruneLength: 200)
     }
   }
 `
@@ -80,7 +81,8 @@ const Title = styled.div`
   width: 100%;
   font-size: 32px;
   font-weight: 700;
-  height: 70px;
+  min-height: 70px;
+  height: auto;
   border-bottom: 1px solid grey;
 `
 const Meta = styled.div`
@@ -126,21 +128,35 @@ const Photos = styled.div`
   align-items: center;
   padding: 10px 0;
   height: auto;
+  row-gap: 2px;
 `
 
 const PhotoMain = styled.div`
+  display: grid;
   padding-bottom: 2px;
+  max-height: 350px;
+  overflow: hidden;
+  row-gap: 2px;
+  & img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 350px;
+    object-fit: cover;
+  }
 `
 
 const PhotoGallery = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2px;
+  width: 100%;
   height: 150px;
   & img {
     display: block;
     width: 100%;
-    height: 50%;
+    height: 100%;
+    max-height: 150px;
     object-fit: cover;
   }
 `
@@ -170,7 +186,7 @@ const ButtonText = styled.div`
 `
 
 const PostLayout = ({ data }) => {
-  const srcImage = data.mdx.frontmatter.featuredImage.childImageSharp.fluid.src
+  const image = getImage(data.mdx.frontmatter.featuredImage)
   const start = data.mdx.frontmatter.published
 
   const day = start.slice(8, 10)
@@ -206,28 +222,32 @@ const PostLayout = ({ data }) => {
             </Description>
             <Photos>
               <PhotoMain>
-                <img src={srcImage} alt={data.mdx.frontmatter.title} />
+                <GatsbyImage image={image} alt={data.mdx.frontmatter.title} />
               </PhotoMain>
-              <PhotoGallery>
-                {data.mdx.frontmatter.gallery.slice(0, 3).map(item => (
-                  <div key={item.childImageSharp.fluid.originalName}>
-                    <img
-                      src={item.childImageSharp.fluid.src}
-                      alt={item.childImageSharp.fluid.originalName}
-                    />
-                  </div>
-                ))}
-              </PhotoGallery>
+              <SimpleReactLightbox>
+                <SRLWrapper>
+                  <PhotoGallery>
+                    {data.mdx.frontmatter.gallery.slice(0, 3).map(item => (
+                      <div key={item.childImageSharp.fluid.originalName}>
+                        <GatsbyImage
+                          image={item.childImageSharp.gatsbyImageData}
+                          alt={item.childImageSharp.fluid.originalName}
+                        />
+                      </div>
+                    ))}
+                  </PhotoGallery>
+                </SRLWrapper>
+              </SimpleReactLightbox>
             </Photos>
           </Content>
           <Footer>
             <WrapperButton>
               <ButtonBack>
-                <ButtonText as={Link} aria-label="Powrót" to="/">
+                <ButtonText as={Link} aria-label="Wstecz" to="/">
                   <span>
                     <LeftIcon />
                   </span>
-                  Powrót                  
+                  Wstecz
                 </ButtonText>
               </ButtonBack>
             </WrapperButton>

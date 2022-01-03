@@ -1,6 +1,7 @@
 import React from "react"
 import { ClockIcon } from "../../icon"
 import { Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import styled from "styled-components"
 
@@ -36,13 +37,15 @@ const CardImage = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  max-height: 200px;
+  max-height: 250px;
   background-color: grey;
   overflow: hidden;
   cursor: pointer;
   & img {
+    display: block;
     width: 100%;
     height: 100%;
+    min-height: 250px;
     object-fit: cover;
   }
   ::after {
@@ -120,12 +123,12 @@ const BreakSection = styled.div`
 `
 
 export const NewsListItem = ({ title, published, category, image, slug }) => {
-  const srcImage = image.src
+  const srcImage = getImage(image)
 
   return (
     <Wrapper as={Link} aria-label="Więcej" to={`/${slug}`}>
       <CardImage>
-        <img src={srcImage} alt={title} />
+        <GatsbyImage image={srcImage} alt={title} />
       </CardImage>
       <BreakSection />
       <MetaWrapper>

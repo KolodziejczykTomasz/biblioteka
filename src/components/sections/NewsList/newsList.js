@@ -88,12 +88,12 @@ export const NewsList = ({data}) => {
   } = data
   
   return (
-    <Section>
+    <Section id="news">
       <Wrapper>
         <Title>Wiadomości</Title>
         <WrapperCard>
           {nodes
-          .sort((a, b) => (b.published) -  (a.published))
+            .sort((a, b) => b.published - a.published)
             .slice(0, 8)
             .map(
               ({
@@ -112,15 +112,19 @@ export const NewsList = ({data}) => {
                   published={published}
                   category={category}
                   author={author}
-                  image={featuredImage.childImageSharp.fluid}
+                  image={featuredImage}
                   slug={slug}
                 />
               )
             )}
         </WrapperCard>
         <WrapperButton>
-          <ButtonMore >
-            <ButtonText as={Link} aria-label="wszystkie aktualności" to="/allpost">
+          <ButtonMore>
+            <ButtonText
+              as={Link}
+              aria-label="wszystkie aktualności"
+              to="/allpost"
+            >
               Zobacz wszystkie
               <span>
                 <RightIcon />

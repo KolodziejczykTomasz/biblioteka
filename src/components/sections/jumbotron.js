@@ -1,7 +1,8 @@
 import React from "react"
-import JumbotronImage from "../../assets/images/jubotron.jpg"
 import { Button } from "../button"
 import { RightIcon } from "../icon"
+import scrollTo from "gatsby-plugin-smoothscroll"
+import JumbotronImage from "../../assets/images/jubotron.jpg"
 
 import styled from "styled-components"
 
@@ -57,7 +58,7 @@ export const Jumbotron = () => (
       <Title>Aktualne Godziny Otwarcia Bibliotek</Title>
       <Subtitle>Aktualizacja od 1.11.2021r.</Subtitle>
       <div>
-        <Button>
+        <Button onClick={() => scrollTo("#news")}>
           <ButtonText>
             zobacz więcej
             <span>

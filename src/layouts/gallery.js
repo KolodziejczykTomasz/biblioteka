@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby"
 import { VerticalLine } from "../components/icons/"
 import { ButtonBack } from "../components/buttonBack"
 import { LeftIcon } from "../components/icon"
+import { GatsbyImage } from "gatsby-plugin-image"
+import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 
 import styled from "styled-components"
@@ -17,7 +19,19 @@ export const query = graphql`
         category
         published
         gallery {
+          publicURL
           childImageSharp {
+            gatsbyImageData(
+              height: 600
+              width: 900
+              transformOptions: { fit: COVER }
+              placeholder: BLURRED
+              webpOptions: { quality: 50 }
+            )
+
+            resize {
+              aspectRatio
+            }
             fluid {
               srcSet
               src
@@ -162,20 +176,21 @@ const ButtonText = styled.div`
 `
 
 const GalleryLayout = ({ data }) => {
-    const start = data.mdx.frontmatter.published
+  const start = data.mdx.frontmatter.published
 
-    const day = start.slice(8, 10)
-    const year = start.slice(0, 4)
-    const Month = start.slice(5, 7)
+  const day = start.slice(8, 10)
+  const year = start.slice(0, 4)
+  const Month = start.slice(5, 7)
 
-    const getMonthName = Month => {
-      const d = new Date()
-      d.setMonth(Month - 1)
-      const monthName = d.toLocaleString("default", { month: "long" })
-      return monthName
-    }
+  const getMonthName = Month => {
+    const d = new Date()
+    d.setMonth(Month - 1)
+    const monthName = d.toLocaleString("default", { month: "long" })
+    return monthName
+  }
 
-    const mName = getMonthName(Month)
+  const mName = getMonthName(Month)
+
   return (
     <SinglePageTemplate>
       <WrapperWide>
@@ -190,16 +205,22 @@ const GalleryLayout = ({ data }) => {
             <VerticalLine />
             <Category>{data.mdx.frontmatter.category}</Category>
           </Meta>
-          <WrapperGallery>
-            {data.mdx.frontmatter.gallery.map(item => (
-              <WrapperPhoto key={item.childImageSharp.fluid.originalName}>
-                <img
-                  src={item.childImageSharp.fluid.src}
-                  alt={item.childImageSharp.fluid.originalName}
-                />
-              </WrapperPhoto>
-            ))}
-          </WrapperGallery>
+          <SimpleReactLightbox>
+            <SRLWrapper>
+              <WrapperGallery>
+                {data.mdx.frontmatter.gallery.map(item => (
+                  <a href={item.publicURL}>
+                    <WrapperPhoto key={item.childImageSharp.fluid.originalName}>
+                      <GatsbyImage
+                        image={item.childImageSharp.gatsbyImageData}
+                        alt={item.childImageSharp.fluid.originalName}
+                      />
+                    </WrapperPhoto>
+                  </a>
+                ))}
+              </WrapperGallery>
+            </SRLWrapper>
+          </SimpleReactLightbox>
           <Footer>
             <WrapperButton>
               <ButtonBack>
@@ -215,6 +236,7 @@ const GalleryLayout = ({ data }) => {
         </WrapperShort>
       </WrapperWide>
     </SinglePageTemplate>
-  )}
+  )
+}
 
 export default GalleryLayout

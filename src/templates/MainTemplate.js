@@ -1,5 +1,6 @@
 import React from "react"
 
+import { Navigation } from "../components/sections/navigation"
 import { Header } from "../components/sections/header"
 import { Jumbotron } from "../components/sections/jumbotron"
 import { Footer } from "../components/sections/footer"
@@ -9,7 +10,6 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { ThemeProvider } from "styled-components"
 import { theme } from "../assets/styles/theme"
 
-import "../assets/styles/fonts.css"
 
 import styled from "styled-components"
 
@@ -22,6 +22,7 @@ const MainPageTemplate = ({ children }) => {
       <Wrapper>
         <ChakraProvider>
           <Header />
+          <Navigation />
           <Jumbotron />
           {children}
           <Footer />
