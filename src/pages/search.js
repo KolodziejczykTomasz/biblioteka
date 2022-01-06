@@ -1,7 +1,8 @@
 import * as React from "react"
+//import { useFlexSearch } from "react-use-flexsearch"
+import { graphql } from "gatsby"
+import { SearchDisplayItem } from "../components/SearchDisplayItem"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
-
-
 import styled from "styled-components"
 
 const WrapperWide = styled.div`
@@ -43,14 +44,75 @@ const Title = styled.div`
   border-bottom: 1px solid grey;
 `
 
-const SearchPage = () => (
-  <SinglePageTemplate>    
-    <WrapperWide>
-      <WrapperShort>
-        <Title>Wyniki wyszukiwania</Title>       
-      </WrapperShort>
-    </WrapperWide>
-  </SinglePageTemplate>
-)
+const SearchPage = ({ data }) => {
+  const {
+    allMdx: { nodes },
+    localSearchPages: { index, store },
+  } = data
 
+   const { search } = window.location
+   const query = new URLSearchParams(search).get("s")
+   const [searchQuery] = React.useState(query || "")
+
+ 
+
+  const posts = nodes
+  const filterPosts = (posts, query) => {
+    if (!query) {
+      return posts
+    }
+
+    return posts.filter(({ frontmatter: { title } }) => {
+      const postName = title.toLowerCase()
+      return postName.includes(query)
+    })
+  }
+
+  const filteredPosts = filterPosts(posts, searchQuery)
+  return (
+    <SinglePageTemplate>
+      <WrapperWide>
+        <WrapperShort>
+          <Title>Wyniki wyszukiwania</Title>
+
+          {searchQuery ? (
+            <ul>
+              {filteredPosts.map(
+                ({ frontmatter: { title, slug }, body }) => (
+                  <SearchDisplayItem
+                    key={slug}
+                    title={title}
+                    slug={slug}
+                    body={body}
+                  />
+                )
+              )}
+            </ul>
+          ) : null}
+        </WrapperShort>
+      </WrapperWide>
+    </SinglePageTemplate>
+  )
+}
+export const pageQuery = graphql`
+  query {
+    localSearchPages {
+      index
+      store
+    }
+    allMdx(sort: { fields: frontmatter___published, order: DESC }) {
+      nodes {
+        frontmatter {
+          title
+          altText
+          author
+          category
+          published
+          slug
+        }
+        body
+      }
+    }
+  }
+`
 export default SearchPage

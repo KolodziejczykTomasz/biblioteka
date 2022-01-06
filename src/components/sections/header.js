@@ -1,11 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
-import { SearchIcon } from "../icon"
-import { Input } from "../input"
+import { SearchBar } from "../SearchBar"
 
 import Logo from "../../assets/images/logo.jpg"
-import BIP_Icon from "../../assets/images/BipIcon.png"
-import FB_Icon from "../../assets/images/FbIcon.png"
 
 import styled from "styled-components"
 
@@ -127,110 +124,27 @@ const ColumnSearch = styled.div`
   display: flex;
   justify-content: right;
   align-items: center;
-  margin-right: 10px;
-  @media (max-width: 440px) {
-    flex-direction: column;
-  }
-  @media (max-width: 1100px) {
-    display: flex;
-    width: 100%;
-    justify-content: center; 
-    margin-right: 0;
-    padding: 10px 5px;
-  }
-  & div:nth-child(2) {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    margin: 0 10px;
-    position: relative;
-    border-radius: 50px;
-    cursor: pointer;
-    color: rgb(27, 95, 198);
-    transition: 0.2s;
-  }
-  & div:nth-child(3) {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    & img {
-      display: grid;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      :hover {
-        filter: grayscale(50%);
-      }
-      :focus {
-        outline: rgb(27, 95, 198) solid 2px;
-      }
-    }
-  }
 `
 
-const WrapperIcon = styled.div`
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 50px;
-  height: 100%;
-  border-radius: 0 25px 25px 0;
-  :hover {
-    background-color: rgb(27, 95, 198);
-    color: white;
-  }
-`
-
-const WrapperIconBip = styled.div`
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  & img {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    :hover {
-      filter: grayscale(50%);
-    }
-    :focus {
-      outline: rgb(27, 95, 198) solid 2px;
-    }
-  }
-`
-
-export const Header = () => (
-  <Wrapper>
-    <div>
-      <RowLogo>
-        <ColumnLogo as={Link} aria-label="Strona główna" to="/">
-          <div>
-            <img src={Logo} alt="Logo biblioteki" />
-          </div>
-          <div>Biblioteka Publiczna Gminy Lidzbark Warmiński w Kraszewie</div>
-        </ColumnLogo>
-        <ColumnSearch>
-          <WrapperIconBip>
-            <img src={BIP_Icon} alt="BIP logo" />
-          </WrapperIconBip>
-          <div>
-            <WrapperIcon>
-              <SearchIcon />
-            </WrapperIcon>
-            <Input placeholder="Szukaj..." />
-          </div>
-          <div>
-            <img src={FB_Icon} alt="Facebook logo" />
-          </div>
-        </ColumnSearch>
-      </RowLogo>
-    </div>
-  </Wrapper>
-)
+export const Header = ({ searchQuery, setSearchQuery }) => {
+  return (
+    <Wrapper>
+      <div>
+        <RowLogo>
+          <ColumnLogo as={Link} aria-label="Strona główna" to="/">
+            <div>
+              <img src={Logo} alt="Logo biblioteki" />
+            </div>
+            <div>Biblioteka Publiczna Gminy Lidzbark Warmiński w Kraszewie</div>
+          </ColumnLogo>
+          <ColumnSearch>
+            <SearchBar
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+            />
+          </ColumnSearch>
+        </RowLogo>
+      </div>
+    </Wrapper>
+  )
+}

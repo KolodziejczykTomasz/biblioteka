@@ -36,36 +36,38 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-local-search',
-      options: {    
-        name: 'pages',
-        engine: 'flexsearch',
-        engineOptions: 'speed',
+      resolve: "gatsby-plugin-local-search",
+      options: {
+        name: "pages",
+        engine: "flexsearch",
+        engineOptions: "speed",
         query: `
           {
-            allMarkdownRemark {
-              nodes {
-                id
-                frontmatter {
-                  path
-                  title
-                }
-                rawMarkdownBody
-              }
-            }
+            allMdx {
+    nodes {
+      body
+      slug
+      id
+      frontmatter {
+        title
+        slug
+      }
+      body
+    }
+  }
           }
         `,
-        ref: 'id',
-        index: ['title', 'body'],
-        store: ['id', 'path', 'title'],
+        ref: "id",
+        index: ["title", "body"],
+        store: ["id", "slug", "title", "body"],
 
-       
         normalizer: ({ data }) =>
-          data.allMarkdownRemark.nodes.map((node) => ({
+          data.allMdx.nodes.map(node => ({
             id: node.id,
             path: node.frontmatter.path,
             title: node.frontmatter.title,
-            body: node.rawMarkdownBody,
+            slug: node.frontmatter.slug,
+            body: node.body,
           })),
       },
     },
