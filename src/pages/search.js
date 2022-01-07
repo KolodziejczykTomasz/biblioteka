@@ -1,6 +1,8 @@
 import * as React from "react"
 //import { useFlexSearch } from "react-use-flexsearch"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+import { ButtonBack } from "../components/buttonBack"
+import { LeftIcon } from "../components/icon"
 import { SearchDisplayItem } from "../components/SearchDisplayItem"
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 import styled from "styled-components"
@@ -12,7 +14,9 @@ const WrapperWide = styled.div`
 const WrapperShort = styled.div`
   display: flex;
   margin: 0 144px;
-  padding: 20px 15px 80px 15px;
+  min-height: 500px;
+  height: auto;
+  padding: 20px 5px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -44,17 +48,62 @@ const Title = styled.div`
   border-bottom: 1px solid grey;
 `
 
+const Footer = styled.div`
+display: flex:
+height: 50px;
+width: 100%;
+`
+const WrapperButton = styled.div`
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  padding-right: 15px;
+`
+
+const ButtonText = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  :hover {
+    color: white;
+    z-index: 999;
+  }
+  & span {
+    margin-left: 10px;
+    margin-bottom: -4px;
+  }
+  & span:hover {
+    color: white;
+    z-index: 999;
+  }
+  & span:visited {
+    color: white;
+  }
+
+  & span:active {
+    color: white;
+  }
+`
+
+const Result = styled.div`
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+`
+
 const SearchPage = ({ data }) => {
   const {
-    allMdx: { nodes },
-    localSearchPages: { index, store },
+    allMdx: { nodes },    
   } = data
 
-   const { search } = window.location
-   const query = new URLSearchParams(search).get("s")
-   const [searchQuery] = React.useState(query || "")
-
- 
+  const { search } = window.location
+  const query = new URLSearchParams(search).get("s")
+  const [searchQuery] = React.useState(query || "")
 
   const posts = nodes
   const filterPosts = (posts, query) => {
@@ -77,18 +126,30 @@ const SearchPage = ({ data }) => {
 
           {searchQuery ? (
             <ul>
-              {filteredPosts.map(
-                ({ frontmatter: { title, slug }, body }) => (
-                  <SearchDisplayItem
-                    key={slug}
-                    title={title}
-                    slug={slug}
-                    body={body}
-                  />
-                )
-              )}
+              {filteredPosts.map(({ frontmatter: { title, slug }, body }) => (
+                <SearchDisplayItem
+                  key={slug}
+                  title={title}
+                  slug={slug}
+                  body={body}
+                />
+              ))}
             </ul>
-          ) : null}
+          ) : (
+            <Result>Nie znaleziono pasujących informacji.</Result>
+          )}
+          <Footer>
+            <WrapperButton>
+              <ButtonBack>
+                <ButtonText as={Link} aria-label="Powrót" to="/">
+                  <span>
+                    <LeftIcon />
+                  </span>
+                  Powrót
+                </ButtonText>
+              </ButtonBack>
+            </WrapperButton>
+          </Footer>
         </WrapperShort>
       </WrapperWide>
     </SinglePageTemplate>
