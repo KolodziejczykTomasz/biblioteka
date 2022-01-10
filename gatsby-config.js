@@ -43,31 +43,32 @@ module.exports = {
         engineOptions: "speed",
         query: `
           {
-            allMdx {
-    nodes {
-      body
-      slug
-      id
-      frontmatter {
-        title
-        slug
-      }
-      body
-    }
-  }
+            allMdx (sort: { fields: [frontmatter___published], order: DESC }){
+              nodes {                
+                id
+                frontmatter {
+                  title
+                  slug
+                  published
+                  excerpt
+                }
+                rawBody  
+                body              
+              }
+            }
           }
         `,
         ref: "id",
-        index: ["title", "body"],
-        store: ["id", "slug", "title", "body"],
+        index: ["title", "rawBody", "excerpt", "body"],
+        store: ["id", "slug", "title", "rawBody", "excerpt", "body"],
 
         normalizer: ({ data }) =>
           data.allMdx.nodes.map(node => ({
             id: node.id,
-            path: node.frontmatter.path,
             title: node.frontmatter.title,
             slug: node.frontmatter.slug,
             body: node.body,
+            rawBody: node.rawBody,
           })),
       },
     },

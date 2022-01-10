@@ -1,8 +1,8 @@
 import React from "react"
 import { SearchIcon } from "../components/icon"
 import { Input } from "../components/input"
-import { useFlexSearch } from "react-use-flexsearch"
 import { graphql } from "gatsby"
+import { window } from "browser-monads"
 
 import BIP_Icon from "../assets/images/BipIcon.png"
 import FB_Icon from "../assets/images/FbIcon.png"
@@ -113,12 +113,11 @@ export const pageQuery = graphql`
   }
 `
 export const SearchBar = () => {
-  const { search } = window.location
+  
+ const { search } = window.location
   const query = new URLSearchParams(search).get("s")
   const [searchQuery, setSearchQuery] = React.useState(query || "")
-  
- 
-  
+
   return (
     <form action="/search/" method="get" autoComplete="off">
       <Wrapper>

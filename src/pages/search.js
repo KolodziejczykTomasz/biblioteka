@@ -1,9 +1,11 @@
 import * as React from "react"
-//import { useFlexSearch } from "react-use-flexsearch"
+import { useFlexSearch } from "react-use-flexsearch"
 import { graphql, Link } from "gatsby"
 import { ButtonBack } from "../components/buttonBack"
 import { LeftIcon } from "../components/icon"
 import { SearchDisplayItem } from "../components/SearchDisplayItem"
+import { window } from "browser-monads"
+
 import SinglePageTemplate from "../templates/SinglePageTemplate"
 import styled from "styled-components"
 
@@ -96,45 +98,35 @@ const Result = styled.div`
   width: 100%;
 `
 
-const SearchPage = ({ data }) => {
-  const {
-    allMdx: { nodes },    
-  } = data
-
+const SearchPage = ({
+  data: {
+    localSearchPages: { index, store },
+  },
+}) => {
   const { search } = window.location
   const query = new URLSearchParams(search).get("s")
-  const [searchQuery] = React.useState(query || "")
+  const [searchQuery] = React.useState(query || null)
 
-  const posts = nodes
-  const filterPosts = (posts, query) => {
-    if (!query) {
-      return posts
-    }
+  const results = useFlexSearch(searchQuery, index, store)
 
-    return posts.filter(({ frontmatter: { title } }) => {
-      const postName = title.toLowerCase()
-      return postName.includes(query)
-    })
-  }
-
-  const filteredPosts = filterPosts(posts, searchQuery)
   return (
     <SinglePageTemplate>
       <WrapperWide>
         <WrapperShort>
           <Title>Wyniki wyszukiwania</Title>
 
-          {searchQuery ? (
-            <ul>
-              {filteredPosts.map(({ frontmatter: { title, slug }, body }) => (
+          {results.length ? (
+            <>
+              {results.map(result => (
                 <SearchDisplayItem
-                  key={slug}
-                  title={title}
-                  slug={slug}
-                  body={body}
+                  key={result.slug}
+                  title={result.title}
+                  slug={result.slug}
+                  excerpt={result.excerpt}
+                  body={result.body}
                 />
               ))}
-            </ul>
+            </>
           ) : (
             <Result>Nie znaleziono pasujących informacji.</Result>
           )}
@@ -155,25 +147,14 @@ const SearchPage = ({ data }) => {
     </SinglePageTemplate>
   )
 }
+
 export const pageQuery = graphql`
   query {
     localSearchPages {
       index
       store
     }
-    allMdx(sort: { fields: frontmatter___published, order: DESC }) {
-      nodes {
-        frontmatter {
-          title
-          altText
-          author
-          category
-          published
-          slug
-        }
-        body
-      }
-    }
   }
 `
+
 export default SearchPage

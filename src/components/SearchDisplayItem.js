@@ -1,14 +1,14 @@
 import React from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
-import {Button} from "../components/button"
+import { Button } from "../components/button"
 
 import styled from "styled-components"
 
 const Title = styled.div`
-margin: 10px 0;
-font-size: 20px;
-font-weight: 600;
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
 `
 
 const Wrapper = styled.div`
@@ -45,7 +45,9 @@ export const SearchDisplayItem = ({ body, title, slug }) => (
   <Wrapper>
     <Title>{title}</Title>
     <Main>
-      <MDXRenderer>{body}</MDXRenderer>
+      <MDXRenderer>
+        {body}        
+      </MDXRenderer>
     </Main>
     <Footer>
       <Button as={Link} to={`/${slug}`}>

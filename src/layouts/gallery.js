@@ -169,9 +169,25 @@ const ButtonText = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  :hover {
+    color: white;
+    z-index: 999;
+  }
   & span {
     margin-left: 10px;
     margin-bottom: -4px;
+  }
+  & span:hover {
+    color: white;
+    z-index: 999;
+  }
+  & span:visited {
+    color: white;
+  }
+
+  & span:active {
+    color: white;
   }
 `
 
