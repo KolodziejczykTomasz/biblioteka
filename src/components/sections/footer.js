@@ -212,7 +212,12 @@ export const Footer = () => (
         <div>
           <Title>Kontakt</Title> <div>tel.: 89 766 32 05 </div>
           <div>e-mail: poczta@biblioteka-kraszewo.pl</div>
+            <div style={{marginTop: "20px"}}>
+            <Title>Inspektor Ochrony danych osobowych</Title>
+           <div>e-mail: iod@biblioteka-kraszewo.pl</div>
         </div>
+        </div>
+
       </ContentContact>
     </WrapperShort>
     <ContentCopyright>
